@@ -1,4 +1,12 @@
 class Utils {
+	static esfericas_a_cartesianas(p, t, f) {
+		let x = p*Math.sin(t)*Math.cos(f);
+		let y = p*Math.sin(t)*Math.sin(f);
+		let z = p*Math.cos(t);
+		let cartesianas = [x,y,z];
+		return cartesianas;
+	}
+
 	static onFileChooser(event, onLoadFileHandler) {
 		//Code from https://stackoverflow.com/questions/750032/reading-file-contents-on-the-client-side-in-javascript-in-various-browsers
 		if (typeof window.FileReader !== 'function') {
