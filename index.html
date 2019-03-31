@@ -23,20 +23,20 @@
 	<table border='2'>
 		<tr>
 			<td>Rotar casa</td>
-			<td><input type="range" id='range_casa' min="-180" max="180" value="0" oninput="rotar_casa(this);"></td>
+			<td><input type="range" disabled id="range_casa" step="0.01" min="0" max="360" value="0" oninput="rotar_casa(this);"></td>
 		</tr>
 		<tr>
 			<td>Rotar cohete</td>
-			<td><input type="range" id='range_cohete' min="-180" max="180" value="0" oninput= "rotar_cohete(this);"></td>
+			<td><input type="range" disabled id='range_cohete' min="-180" max="180" value="0" oninput= "rotar_cohete(this);"></td>
 		</tr>
 		<tr>
 			<td>Orbitar cohete</td>
-			<td><input type="range" id='range_orbita' min="0" max="360" value="0" oninput= "orbitar_cohete(this);"></td>
+			<td><input type="range" disabled id='range_orbita' step="0.001" min="0" max="720" value="0" oninput= "orbitar_cohete(this);"></td>
 		</tr>
 		<tr>
 			<td>Seleccionar tipo de cámara</td>
 			<td>
-				<select id="camara_seleccionada">
+				<select disabled id="camara_seleccionada">
 				  <option value=0>Manual</option>
 				  <option value=1>Automática</option>
 				</select>
@@ -44,22 +44,22 @@
 		</tr>
 		<tr>
 			<td>Paneo</td>
-			<td><input type="range" id="range_paneo" step="0.1" min="-2" max="2" value="0" oninput="paneo(this);"></td>
+			<td><input type="range" disabled id="range_paneo" step="0.1" min="-40" max="40" value="0" oninput="paneo(this);"></td>
 		</tr>
 		<tr>
 			<td>Zoom</td>
-			<td><input type="range" id="range_zoom" step="0.1" min="0" max="200" value="20" oninput="zoom(this);"></td>
+			<td><input type="range" disabled id="range_zoom" step="0.1" min="3" max="110" value="default_zoom" oninput="zoom(this);"></td>
 		</tr>
 		<tr>
 			<td>Altura</td>
-			<td><input type="range" id="range_altura" step="0.1" min="-2" max="2" value="0" oninput="altura(this);"></td>
+			<td><input type="range" disabled id="range_altura" step="0.1" min="0" max="70" value="default_altura" oninput="altura(this);"></td>
 		</tr>
 		<tr>
-			<td><button onclick="reset_camera();">Restablecer cámara</button>
+			<td><button id="boton_reset" disabled onclick="reset_camera();">Restablecer cámara</button>
 			</td>
 			<td>
-				<button onclick="onLoad();">Cargar</button>
-				<button onclick="onRender();">Renderizar</button>
+				<button id="boton_cargar" onclick="onLoad();">Cargar</button>
+				<button id="boton_dibujar" disabled onclick="onRender();">Dibujar</button>
 			</td>
 		</tr>
 	</table>

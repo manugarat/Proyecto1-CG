@@ -1,9 +1,55 @@
 class Utils {
-	static esfericas_a_cartesianas(p, t, f) {
-		let x = p*Math.sin(t)*Math.cos(f);
-		let y = p*Math.sin(t)*Math.sin(f);
-		let z = p*Math.cos(t);
-		let cartesianas = [x,y,z];
+
+	static deshabilitar_sliders(value) {
+		document.getElementById("range_paneo").disabled = value;
+		document.getElementById("range_zoom").disabled = value;
+		document.getElementById("range_altura").disabled = value;
+	}
+
+	static deshabilitar_movimientos_y_camara(value) {
+		document.getElementById("range_casa").disabled = value;
+		document.getElementById("range_cohete").disabled = value;
+		document.getElementById("range_orbita").disabled = value;
+		document.getElementById("camara_seleccionada").disabled = value;
+		document.getElementById("boton_reset").disabled = value;
+	}
+
+	static blanquear(length) {
+		let colors = new Array(length);
+		let i = 0;
+		while (i < length) colors[i++] = 255;
+		return colors;
+	}
+
+	static indices_triangulos_a_lineas(indicesT) {
+		let indicesL = new Array(indicesT.length*3);
+		let pri, segu, terc, iT = 0, iL = 0;
+		while (iT < indicesT.length) {
+			pri = indicesT[iT++];
+			segu = indicesT[iT++];
+			terc = indicesT[iT++];
+			indicesL[iL++] = pri; indicesL[iL++] = segu;
+			indicesL[iL++] = segu; indicesL[iL++] = terc;
+			indicesL[iL++] = terc; indicesL[iL++] = pri;
+		}
+		return indicesL;
+	}
+
+	static cartesianas_a_esfericas(cartesianas) {
+		let x = cartesianas[0], y = cartesianas[1], z = cartesianas[2];
+		let esfericas = new Array(3); // ro, tita y fi
+		esfericas[0] = Math.sqrt( Math.pow(x,2)+Math.pow(y,2)+Math.pow(z,2) ); // ro
+		esfericas[1] = Math.atan( Math.sqrt(Math.pow(x,2)+Math.pow(y,2))/z ); // tita
+		esfericas[2] = Math.atan(y/x); // fi
+		return esfericas;
+	}
+
+	static esfericas_a_cartesianas(esfericas) {
+		let p = esfericas[0], t = esfericas[1], f = esfericas[2];
+		let cartesianas = new Array(3);
+		cartesianas[0] = p*Math.sin(t)*Math.cos(f);
+		cartesianas[1] = p*Math.sin(t)*Math.sin(f);
+		cartesianas[2] = p*Math.cos(t);
 		return cartesianas;
 	}
 
